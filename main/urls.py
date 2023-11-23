@@ -16,15 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from aluno.views import aluno_criar,index,aluno_listar,aluno_editar,aluno_remover
+from aluno import views
+from prova.views import dvd_criar,dvd_editar,dvd_listar,dvd_remover
+from provab.views import HospedagemCriar,HospedagemDeletar,HospedagemEditar,HospedagemListar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index,name='index'),
-    path('aluno/',aluno_criar,name='aluno_criar'),
-    path('aluno/editar/<int:id>/',aluno_editar, name='aluno_editar'),
-    path('aluno/remover/<int:id>/',aluno_remover,name='aluno_remover'),
-    path('aluno/listar',aluno_listar,name='aluno_listar'),
+    # path('',views.Index.as_view(),name='index'),
+    path('aluno/',views.AlunoCriar.as_view(),name='aluno_criar'),
+    path('aluno/editar/<int:id>/',views.AlunoEditar.as_view(), name='aluno_editar'),
+    path('aluno/remover/<int:id>/',views.AlunoDeletar.as_view(),name='aluno_remover'),
+    path('aluno/listar',views.AlunoListar.as_view(),name='aluno_listar'),
+    path('dvd/',dvd_criar, name='dvd_criar'),
+    path('dvd/editar/<int:id>/',dvd_editar, name='dvd_editar'),
+    path('dvd/listar',dvd_listar, name='dvd_listar'),
+    path('dvd/remover/<int:id>/',dvd_remover,name='dvd_remover'),
+    path('hospedagem/',HospedagemCriar.as_view(), name='hospedagem_criar'),
+    path('hospedagem/editar/<int:id>/',HospedagemEditar.as_view(), name = 'hospedagem_editar'),
+    path('hospedagem/remover/<int:id>/',HospedagemDeletar.as_view(), name= 'hospedagem_remover'),
+    path('hospedagem/listar', HospedagemListar.as_view(), name= 'hospedagem_listar'),
 ]
 
 

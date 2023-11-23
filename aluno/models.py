@@ -10,6 +10,7 @@ class Cidade(models.Model):
 
 class Curso(models.Model):
     nome = models.CharField(max_length=100)
+    coordenador =  models.CharField(max_length=100,default=None)
 
     def __str__(self):
         return self.nome 
@@ -21,3 +22,8 @@ class Aluno(models.Model):
     cidade = models.ForeignKey(Cidade,on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE)
 
+class Client(models.Model):
+    nome_client = models.CharField(max_length=250)
+    email = models.EmailField()
+    telefone = models.CharField(max_length=9)
+    cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block center %}
+  <h2> Lista de Dvds</h2>
+
+  <a href="{% url 'dvd_criar' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Text</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dvd in dvds %}  
+      <tr>
+        <td>{{ dvd.titulo }}</td>
+        <td>{{ dvd.text }}</td>
+        <td>{{ dvd.valor }}</td>
+        <td>
+          <a href="{% url 'dvd_editar' id=dvd.id %}" class="btn btn-primary btn-sm">Editar</a>
+          <a href="{% url 'dvd_remover' id=dvd.id %}" class="btn btn-danger btn-sm">Remover</a>
+        </td>
+      </tr>
+      {% endfor %}
+    
+    </tbody>
+  </table>
+{% endblock %}

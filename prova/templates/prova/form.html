@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block center %}
+    <h2> Formulário de DVD.</h2>
+       
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Titulo</label>
+            {{ form.titulo }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="nome" class="form-label">Text</label>
+            {{ form.text }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Valor</label>
+            {{ form.valor}}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>    
+{% endblock %}
+   
